@@ -1,3 +1,4 @@
+import { set } from "mongoose";
 import React from "react";
 
 const Tag = ({ tag, isSelected, setSelectedTags }) => {
@@ -7,9 +8,13 @@ const Tag = ({ tag, isSelected, setSelectedTags }) => {
         }} className="bg-green-600 text-white font-semibold py-1 px-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center ">
             {tag}
         </div>)
-	} else {
-
-    }
+	} return (
+       <div onClick={() => {
+        setSelectedTags([tag])
+       }} className="bg-grey-200 text-grey-600 font-semibold py-1 px-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center">
+        {tag}
+       </div> 
+    )
 };
 
 export default Tag;
