@@ -11,7 +11,7 @@ const Tag = ({ tag, isSelected, setSelectedTags }) => {
 	} return (
        <div onClick={() => {
         setSelectedTags([tag])
-       }} className="bg-grey-200 text-grey-600 font-semibold py-1 px-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center">
+       }} className="bg-gray-200 text-gray-600 font-semibold py-1 px-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center">
         {tag}
        </div> 
     )

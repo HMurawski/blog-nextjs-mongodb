@@ -70,6 +70,18 @@ export default function Home() {
           )
         }
 			</h2>
+
+        {
+          selectedTags?.length !==0 && posts?.filter((post) => {
+            return selectedTags.includes(post.tag)
+          }).map(post => {
+            return (
+              <BlogCard />
+            )
+          })
+        }
+
+
 		</main>
 	);
 }
