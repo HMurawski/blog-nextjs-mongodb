@@ -1,11 +1,11 @@
 import Link from "next/link";
-const BlogCard = ({ tag, title, img, id }) => {
+const BlogCard = ({ tag, title, image, id, desc }) => {
 	return (
 		<div>
 			<Link href={`/post/${id}`}>
 				<div className="rounded-lg object-cover">
 					<img
-						src={img}
+						src={image}
 						alt={title}
 						className="rounded-t-lg object-cover h-40 w-full"
 					/>

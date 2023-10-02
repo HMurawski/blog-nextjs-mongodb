@@ -12,6 +12,18 @@ export default function Home() {
 			image: "https://picsum.photos/200/300",
 			tag: "React",
 		},
+		{
+			title: "how to use React",
+			subheading: "React is a dope framework",
+			image: "https://picsum.photos/200/300",
+			tag: "React",
+		},
+		{
+			title: "how to use React",
+			subheading: "React is a dope framework",
+			image: "https://picsum.photos/200/300",
+			tag: "React",
+		},
 	]);
 	const [selectedTags, setSelectedTags] = useState([]);
 	const [error, setError] = useState(null);
@@ -64,24 +76,45 @@ export default function Home() {
 						/>
 					);
 				})}
-        {
-          selectedTags?.length !== 0 && (
-            <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={() => setSelectedTags([])}>Clear</button>
-          )
-        }
+				{selectedTags?.length !== 0 && (
+					<button
+						className="bg-red-500 text-white px-4 py-2 rounded-md"
+						onClick={() => setSelectedTags([])}>
+						Clear
+					</button>
+				)}
 			</h2>
+			<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+				{selectedTags?.length !== 0 &&
+					posts
+						?.filter((post) => {
+							return selectedTags.includes(post.tag);
+						})
+						.map((post) => {
+							return (
+								<BlogCard
+									tag={post.tag}
+									title={post.title}
+									image={post.image}
+									key={post.title}
+									desc={post.subheading}
+								/>
+							);
+						})}
 
-        {
-          selectedTags?.length !==0 && posts?.filter((post) => {
-            return selectedTags.includes(post.tag)
-          }).map(post => {
-            return (
-              <BlogCard />
-            )
-          })
-        }
-
-
+				{selectedTags?.length === 0 &&
+					posts.map((post) => {
+						return (
+							<BlogCard
+								tag={post.tag}
+								title={post.title}
+								image={post.image}
+								key={post.title}
+								desc={post.subheading}
+							/>
+						);
+					})}
+			</div>
 		</main>
 	);
 }
