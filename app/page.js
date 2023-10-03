@@ -102,6 +102,7 @@ export default function Home() {
 								image={post.img}
 								key={post.title}
 								desc={post.subheading}
+								id={post.number}
 							/>
 						);
 					})}

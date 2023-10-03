@@ -9,7 +9,7 @@ const page = ({ params: { id } }) => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const data = await axios.get(`/api/posts/${id}`);
+				const data = await axios.get(`/backend/posts/${id}`);
 				setPost(data.data);
 			} catch (error) {
 				setError("Error fetching post");
@@ -19,6 +19,7 @@ const page = ({ params: { id } }) => {
 	}, [id]);
 
 	if (error) {
+		console.log(error);
 		return (
 			<div className="flex flex-col items-center justify-center w-full h-full mt-20">
 				<h1 className="text-4xl font-bold ">Error</h1>
