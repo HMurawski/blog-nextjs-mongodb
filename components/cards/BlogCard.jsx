@@ -14,7 +14,7 @@ const BlogCard = ({ tag, title, image, id, desc }) => {
 						<p className="text-cl font-semibold text-gray-800 block mt-2 h-10">
 							{title}
 						</p>
-						<p className="mt-4 text-gray-600 h-20">desc</p>
+						<p className="mt-4 text-gray-600 h-20">{desc}</p>
 						<button className="mt-4 text-white bg-green-600 font-semibold py-2 px-4 rounded-lg hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center">
 							Read More
 						</button>

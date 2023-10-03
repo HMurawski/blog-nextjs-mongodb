@@ -6,37 +6,23 @@ import Tag from "@/components/cards/Tag";
 
 export default function Home() {
 	const [posts, setPosts] = useState([
-		{
-			title: "how to use React",
-			subheading: "React is a dope framework",
-			image: "https://picsum.photos/200/300",
-			tag: "React",
-		},
-		{
-			title: "how to use React",
-			subheading: "React is a dope framework",
-			image: "https://picsum.photos/200/300",
-			tag: "React",
-		},
-		{
-			title: "how to use React",
-			subheading: "React is a dope framework",
-			image: "https://picsum.photos/200/300",
-			tag: "React",
-		},
+		
 	]);
 	const [selectedTags, setSelectedTags] = useState([]);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const data = await axios.get("/backend/posts");
+				console.log(data);
 				setPosts(data.data);
 			} catch (error) {
 				setError("Sorry, there was an error while fetching the posts.");
 			}
 		};
+
+		fetchData()
 	}, []);
 
 	if (posts?.length === 0) {
@@ -46,7 +32,7 @@ export default function Home() {
 	if (error) {
 		return (
 			<div className="text-center text-3xl mt-10">
-				<img src="#" alt="error" className="w-96"></img>
+				<img src="https://images.unsplash.com/photo-1506702315536-dd8b83e2dcf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="error" className="w-96 h-96 object-cover"></img>
 			</div>
 		);
 	}
@@ -95,7 +81,7 @@ export default function Home() {
 								<BlogCard
 									tag={post.tag}
 									title={post.title}
-									image={post.image}
+									image={post.img}
 									key={post.title}
 									desc={post.subheading}
 								/>
@@ -108,7 +94,7 @@ export default function Home() {
 							<BlogCard
 								tag={post.tag}
 								title={post.title}
-								image={post.image}
+								image={post.img}
 								key={post.title}
 								desc={post.subheading}
 							/>
