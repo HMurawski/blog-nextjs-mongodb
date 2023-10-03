@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import BlogCard from "@/components/cards/BlogCard";
 import Tag from "@/components/cards/Tag";
+import PostsContext from "@/context/PostsContext";
 
 export default function Home() {
 	const [posts, setPosts] = useState([
@@ -11,12 +12,16 @@ export default function Home() {
 	const [selectedTags, setSelectedTags] = useState([]);
 	const [error, setError] = useState();
 
+
+	const { setPosts: postContextFunc} = useContext(PostsContext)
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const data = await axios.get("/backend/posts");
 				console.log(data);
 				setPosts(data.data);
+				postContextFunc(data.data)
 			} catch (error) {
 				setError("Sorry, there was an error while fetching the posts.");
 			}
